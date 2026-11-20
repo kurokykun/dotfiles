@@ -34,7 +34,7 @@ link systemd/user/cntlm@.service "$CFG/systemd/user/cntlm@.service"
 
 mkdir -p "$HOME/.local/state/quickshell" "$HOME/Pictures/Wallpapers"
 chmod +x "$DOT"/quickshell/scripts/*.sh "$DOT"/quickshell/scripts/*.py \
-         "$DOT"/labwc/*.sh "$DOT"/labwc/autostart "$DOT"/quickshell-greeter/*.sh 2>/dev/null || true
+         "$DOT"/labwc/*.sh "$DOT"/quickshell-greeter/*.sh 2>/dev/null || true
 
 if grep -q '^WLR_DRM_DEVICES=/dev/dri/igpu' "$DOT/labwc/environment" && [ ! -e /dev/dri/igpu ]; then
     echo
