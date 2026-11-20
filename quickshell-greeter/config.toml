@@ -1,0 +1,8 @@
+# /etc/greetd/config.toml — greeter de Quickshell
+[terminal]
+# 7 = MODO PRUEBA (GDM sigue siendo el gestor de inicio). activate.sh lo cambia a 1.
+vt = 7
+
+[default_session]
+command = "/etc/greetd/quickshell/start.sh"
+user = "greeter"

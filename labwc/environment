@@ -1,0 +1,25 @@
+# Variables de entorno de la sesión labwc (formato VAR=valor, sin comillas ni expansión)
+
+# Teclado: ver environment.d/keyboard.env (cambiar con Super+Espacio)
+
+XDG_CURRENT_DESKTOP=labwc:wlroots
+XDG_SESSION_DESKTOP=labwc
+
+# Toolkits en Wayland nativo
+QT_QPA_PLATFORM=wayland;xcb
+QT_QPA_PLATFORMTHEME=qt6ct
+QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+GDK_BACKEND=wayland,x11
+MOZ_ENABLE_WAYLAND=1
+ELECTRON_OZONE_PLATFORM_HINT=auto
+SDL_VIDEODRIVER=wayland,x11
+
+# --- GPU (portátil híbrido Intel + NVIDIA) ---
+# Descomenta UNA línea SOLO después de instalar la regla udev
+# (~/.config/labwc/extras/99-gpu-symlinks.rules), si no labwc no arrancará.
+#
+# Solo Intel: menor consumo. Funcionan la pantalla interna y el HDMI.
+WLR_DRM_DEVICES=/dev/dri/igpu
+#
+# Intel + NVIDIA: necesario si usas el puerto DP/USB-C que va por la NVIDIA.
+#WLR_DRM_DEVICES=/dev/dri/igpu:/dev/dri/dgpu

@@ -1,0 +1,4 @@
+# PAM del lock screen de Quickshell (PamContext.configDirectory apunta aquí).
+# Solo pam_unix: comprueba la contraseña del usuario con unix_chkpwd.
+# No usa pam_faillock a propósito: 3 fallos bloquearían la cuenta 10 min (también en la TTY).
+auth required pam_unix.so

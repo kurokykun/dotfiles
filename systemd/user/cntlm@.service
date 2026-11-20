@@ -1,0 +1,16 @@
+# Cntlm con un perfil de ~/.config/cntlm/<perfil>.conf
+# Lo gestiona el panel de red de Quickshell (activar = enable --now, desactivar = disable --now)
+[Unit]
+Description=Cntlm (perfil %i)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/cntlm -f -c %h/.config/cntlm/%i.conf
+Restart=on-failure
+RestartSec=3
+# cntlm espera a que terminen las conexiones abiertas al pararlo; no esperar más de 3 s
+TimeoutStopSec=3
+
+[Install]
+WantedBy=default.target

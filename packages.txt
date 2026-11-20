@@ -1,0 +1,58 @@
+# Paquetes que usa el escritorio. Instalar con:
+#   sudo pacman -S --needed $(grep -v '^#' packages.txt | grep -v '^aur:' | xargs)
+#   yay -S --needed $(grep '^aur:' packages.txt | cut -d: -f2 | xargs)
+
+# Compositor y shell
+labwc
+quickshell
+qt6-svg
+xdg-desktop-portal-wlr
+
+# Login (greetd + greeter de Quickshell en cage)
+greetd
+cage
+
+# Fondo, bloqueo y reposo
+swaybg
+swayidle
+swaylock
+wlopm
+wlr-randr
+wlsunset
+
+# Portapapeles
+wl-clipboard
+cliphist
+wtype
+
+# Capturas de pantalla
+grim
+slurp
+satty
+
+# Sistema
+brightnessctl
+pipewire
+wireplumber
+networkmanager
+upower
+power-profiles-daemon
+polkit-gnome
+gnome-keyring
+libnotify
+curl
+python
+openvpn
+
+# Apps que abren los atajos
+kitty
+thunar
+fuzzel
+
+# Aspecto
+ttf-jetbrains-mono-nerd
+papirus-icon-theme
+qt6ct
+
+# AUR
+aur:cntlm

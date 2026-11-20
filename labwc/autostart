@@ -1,0 +1,41 @@
+# Se ejecuta con sh al iniciar labwc. Cada programa en segundo plano (&).
+
+# Exporta el entorno Wayland a dbus/systemd (portales, apps lanzadas por dbus)
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_DESKTOP >/dev/null 2>&1
+
+# NVIDIA: crea /dev/nvidia-modeset al iniciar sesión. Sin él, los juegos de Steam
+# (que corren en un contenedor y no pueden crearlo) fallan al crear la ventana Vulkan
+# hasta que algo en el host use OpenGL en la NVIDIA. No toca el driver.
+nvidia-modprobe -m >/dev/null 2>&1
+
+# Fondo de pantalla (el mismo que en GNOME)
+# (el fondo lo dibuja Quickshell con transiciones; swaybg queda debajo como respaldo.
+#  ~/.local/state/quickshell/wallpaper es un enlace al fondo actual, lo mantiene Quickshell)
+swaybg -m fill -i "$HOME/.local/state/quickshell/wallpaper" >/dev/null 2>&1 &
+
+# Barra y notificaciones (espera hasta 30 s a que exista un monitor;
+# si arranca sin pantalla, Quickshell usa una pantalla ficticia y la barra no se ve)
+( for i in $(seq 1 60); do wlr-randr 2>/dev/null | grep -q 'Enabled: yes' && break; sleep 0.5; done
+  exec quickshell ) >/dev/null 2>&1 &
+
+# Historial del portapapeles (cliphist). Independiente de Quickshell: sigue
+# guardando aunque la barra se reinicie. Respeta contenido sensible y la pausa.
+wl-paste --type text --watch "$HOME/.config/quickshell/scripts/clip-store.sh" >/dev/null 2>&1 &
+wl-paste --type image --watch "$HOME/.config/quickshell/scripts/clip-store.sh" >/dev/null 2>&1 &
+
+# Agente de autenticación (diálogos de contraseña de admin)
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 >/dev/null 2>&1 &
+
+# Llavero (contraseñas guardadas, wifi, navegador)
+gnome-keyring-daemon --start --components=secrets >/dev/null 2>&1 &
+
+# Bloqueo a los 5 min, apagar pantalla a los 10, bloquear antes de suspender.
+# lock.sh usa el lock screen de Quickshell y cae a swaylock si no responde;
+# espera a que el bloqueo esté confirmado (importante en before-sleep).
+swayidle -w \
+  timeout 300 "$HOME/.config/quickshell/scripts/lock.sh" \
+  timeout 600 "wlopm --off '*'" resume "wlopm --on '*'" \
+  before-sleep "$HOME/.config/quickshell/scripts/lock.sh" >/dev/null 2>&1 &
+
+# Monitores: crea ~/.config/kanshi/config y descomenta
+#kanshi >/dev/null 2>&1 &

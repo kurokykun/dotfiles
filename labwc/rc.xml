@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configuración principal de labwc. Recargar: Super+Shift+R o desde el menú del escritorio -->
+<labwc_config>
+
+  <core>
+    <gap>6</gap>
+  </core>
+
+  <theme>
+    <cornerRadius>8</cornerRadius>
+    <titlebar>
+      <layout>icon:iconify,max,close</layout>
+    </titlebar>
+    <font place="">
+      <name>JetBrainsMono Nerd Font</name>
+      <size>10</size>
+    </font>
+    <!-- Menús y Alt+Tab un poco más grandes y legibles -->
+    <font place="MenuItem">
+      <name>JetBrainsMono Nerd Font</name>
+      <size>11</size>
+    </font>
+    <font place="MenuHeader">
+      <name>JetBrainsMono Nerd Font</name>
+      <size>10</size>
+      <weight>bold</weight>
+    </font>
+    <font place="OnScreenDisplay">
+      <name>JetBrainsMono Nerd Font</name>
+      <size>11</size>
+      <weight>semibold</weight>
+    </font>
+    <!-- Iconos de las apps en menús, Alt+Tab y barras de título -->
+    <icon>Papirus-Dark</icon>
+    <fallbackAppIcon>application-x-executable</fallbackAppIcon>
+  </theme>
+
+  <!-- Alt+Tab: cuadrícula de miniaturas de las ventanas en la pantalla con foco.
+       preview: la ventana elegida se muestra al frente mientras eliges.
+       Etiqueta = nombre de la aplicación (%n). -->
+  <windowSwitcher preview="yes" outlines="no">
+    <osd show="yes" style="thumbnail" output="focused" thumbnailLabelFormat="%n" />
+  </windowSwitcher>
+
+  <placement>
+    <policy>center</policy>
+  </placement>
+
+  <!-- Arrastrar ventana a un borde/esquina: muestra el área que ocupará -->
+  <!-- Plantillas de ventanas (como Snap Layouts de Windows 11): arrastra una ventana MANTENIENDO
+       Shift (o Ctrl/Alt) y suéltala sobre la zona resaltada. Con Super también funciona, pero al
+       soltar Super se abre el launcher (labwc no cuenta el arrastre del ratón como "otra tecla").
+       labwc elige la zona cuyo centro está más cerca del cursor. -->
+  <regions>
+    <region name="mitad-izquierda"     x="0%"   y="0%"  width="50%"   height="100%" />
+    <region name="mitad-derecha"       x="50%"  y="0%"  width="50%"   height="100%" />
+    <region name="tercio-izquierdo"    x="0%"   y="0%"  width="33%"   height="100%" />
+    <region name="tercio-central"      x="33%"  y="0%"  width="34%"   height="100%" />
+    <region name="tercio-derecho"      x="67%"  y="0%"  width="33%"   height="100%" />
+    <region name="dos-tercios-izq"     x="0%"   y="0%"  width="67%"   height="100%" />
+    <region name="dos-tercios-der"     x="33%"  y="0%"  width="67%"   height="100%" />
+    <region name="cuarto-sup-izq"      x="0%"   y="0%"  width="50%"   height="50%" />
+    <region name="cuarto-sup-der"      x="50%"  y="0%"  width="50%"   height="50%" />
+    <region name="cuarto-inf-izq"      x="0%"   y="50%" width="50%"   height="50%" />
+    <region name="cuarto-inf-der"      x="50%"  y="50%" width="50%"   height="50%" />
+  </regions>
+
+  <snapping>
+    <range inner="10" outer="10" />
+    <cornerRange>50</cornerRange>
+    <overlay enabled="yes">
+      <delay inner="0" outer="0" />
+    </overlay>
+    <topMaximize>yes</topMaximize>
+    <notifyClient>always</notifyClient>
+  </snapping>
+
+  <!-- 4 escritorios. El aviso al cambiar lo dibuja Quickshell (popupTime 0 = sin el de labwc) -->
+  <desktops number="4">
+    <popupTime>0</popupTime>
+    <prefix>Escritorio</prefix>
+  </desktops>
+
+  <focus>
+    <followMouse>no</followMouse>
+    <raiseOnFocus>no</raiseOnFocus>
+  </focus>
+
+  <keyboard>
+    <!-- Mantiene los atajos por defecto (Alt+Tab, Alt+F4, Super+flechas...) -->
+    <default />
+
+    <!-- Aplicaciones -->
+    <keybind key="W-Return"><action name="Execute" command="kitty" /></keybind>
+    <keybind key="C-A-t"><action name="Execute" command="kitty" /></keybind>
+    <keybind key="W-n"><action name="Execute" command="sh -c 'pkill -x quickshell; quickshell &amp;'" /></keybind>
+    <!-- Super sola (al soltar): abrir/cerrar el lanzador de Quickshell, como en GNOME -->
+    <keybind key="Super_L" onRelease="yes"><action name="Execute" command="qs ipc call launcher toggle" /></keybind>
+    <!-- Super+D: minimizar todo / restaurar (mostrar escritorio) -->
+    <!-- Super+Espacio: siguiente distribución de teclado (us ⇄ latam) -->
+    <keybind key="W-space"><action name="Execute" command="sh -c '~/.config/labwc/kbd-layout.sh'" /></keybind>
+    <keybind key="W-d"><action name="ToggleShowDesktop" /></keybind>
+    <keybind key="W-e"><action name="Execute" command="nautilus --new-window" /></keybind>
+    <keybind key="W-Escape"><action name="Execute" command="qs ipc call power toggle" /></keybind>
+    <!-- Bloquear: lock screen de Quickshell (swaylock de respaldo si no responde) -->
+    <!-- Selector de fondos -->
+    <keybind key="W-w"><action name="Execute" command="qs ipc call wallpaper toggle" /></keybind>
+    <!-- Historial del portapapeles -->
+    <keybind key="W-v"><action name="Execute" command="qs ipc call clipboard toggle" /></keybind>
+    <keybind key="W-l"><action name="Execute" command="sh -c '$HOME/.config/quickshell/scripts/lock.sh'" /></keybind>
+
+    <!-- Ventanas -->
+    <keybind key="W-q"><action name="Close" /></keybind>
+    <keybind key="W-f"><action name="ToggleMaximize" /></keybind>
+    <keybind key="W-S-f"><action name="ToggleFullscreen" /></keybind>
+    <keybind key="W-m"><action name="Iconify" /></keybind>
+    <keybind key="W-Left"><action name="SnapToEdge" direction="left" /></keybind>
+    <keybind key="W-Right"><action name="SnapToEdge" direction="right" /></keybind>
+    <keybind key="W-Up"><action name="SnapToEdge" direction="up" /></keybind>
+    <keybind key="W-Down"><action name="SnapToEdge" direction="down" /></keybind>
+
+    <!-- Escritorios virtuales -->
+    <keybind key="W-1"><action name="GoToDesktop" to="1" /></keybind>
+    <keybind key="W-2"><action name="GoToDesktop" to="2" /></keybind>
+    <keybind key="W-3"><action name="GoToDesktop" to="3" /></keybind>
+    <keybind key="W-4"><action name="GoToDesktop" to="4" /></keybind>
+    <keybind key="W-S-1"><action name="SendToDesktop" to="1" /></keybind>
+    <keybind key="W-S-2"><action name="SendToDesktop" to="2" /></keybind>
+    <keybind key="W-S-3"><action name="SendToDesktop" to="3" /></keybind>
+    <keybind key="W-S-4"><action name="SendToDesktop" to="4" /></keybind>
+
+    <!-- Sistema -->
+    <keybind key="W-S-r"><action name="Reconfigure" /></keybind>
+    <!-- Reparar (ntfsfix) y montar disco NTFS extraíble -->
+    <keybind key="W-S-m"><action name="Execute" command="sh -c '$HOME/.local/bin/reparar-disco'" /></keybind>
+    <!-- Capturas (Quickshell). Si Quickshell no responde, se usa screenshot.sh como respaldo -->
+    <keybind key="Print"><action name="Execute" command="sh -c 'qs ipc call screenshot region || ~/.config/labwc/screenshot.sh area'" /></keybind>
+    <keybind key="S-Print"><action name="Execute" command="sh -c 'qs ipc call screenshot screen || ~/.config/labwc/screenshot.sh full'" /></keybind>
+    <keybind key="W-S-s"><action name="Execute" command="sh -c 'qs ipc call screenshot region || ~/.config/labwc/screenshot.sh area'" /></keybind>
+
+    <!-- Audio y brillo -->
+    <keybind key="XF86AudioRaiseVolume"><action name="Execute" command="wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+" /></keybind>
+    <keybind key="XF86AudioLowerVolume"><action name="Execute" command="wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-" /></keybind>
+    <keybind key="XF86AudioMute"><action name="Execute" command="wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle" /></keybind>
+    <keybind key="XF86AudioMicMute"><action name="Execute" command="wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle" /></keybind>
+    <keybind key="XF86MonBrightnessUp"><action name="Execute" command="sh -c 'brightnessctl -q set 5%+; qs ipc call brightness changed'" /></keybind>
+    <keybind key="XF86MonBrightnessDown"><action name="Execute" command="sh -c 'brightnessctl -q set 5%-; qs ipc call brightness changed'" /></keybind>
+  </keyboard>
+
+  <menu>
+    <showIcons>yes</showIcons>
+  </menu>
+
+  <mouse>
+    <default />
+    <!-- Clic izquierdo en el escritorio: sin menú (el derecho sigue abriendo root-menu) -->
+    <context name="Root">
+      <mousebind button="Left" action="Press">
+        <action name="None" />
+      </mousebind>
+    </context>
+  </mouse>
+
+  <libinput>
+    <device category="touchpad">
+      <tap>yes</tap>
+      <naturalScroll>yes</naturalScroll>
+      <disableWhileTyping>yes</disableWhileTyping>
+    </device>
+  </libinput>
+
+</labwc_config>

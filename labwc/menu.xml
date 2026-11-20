@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Menú del clic derecho en el escritorio. Los iconos son del tema Papirus-Dark. -->
+<openbox_menu>
+
+  <!-- Ajustes rápidos: abren los paneles de la barra -->
+  <menu id="quick-settings" label="Ajustes rápidos" icon="preferences-system">
+    <item label="Red y VPN" icon="network-wired">
+      <action name="Execute" command="qs ipc call network toggle" />
+    </item>
+    <item label="Sonido" icon="audio-volume-high">
+      <action name="Execute" command="qs ipc call audio toggle" />
+    </item>
+    <item label="Batería y energía" icon="battery">
+      <action name="Execute" command="qs ipc call battery toggle" />
+    </item>
+    <item label="Calendario y notificaciones" icon="x-office-calendar">
+      <action name="Execute" command="qs ipc call calendar toggle" />
+    </item>
+  </menu>
+
+  <menu id="appearance" label="Apariencia" icon="preferences-desktop-theme">
+    <item label="Fondos de escritorio" icon="preferences-desktop-wallpaper">
+      <action name="Execute" command="qs ipc call wallpaper toggle" />
+    </item>
+    <item label="Tema de apps GTK" icon="nwg-look">
+      <action name="Execute" command="nwg-look" />
+    </item>
+    <item label="Tema de apps Qt" icon="qt6ct">
+      <action name="Execute" command="qt6ct" />
+    </item>
+  </menu>
+
+  <menu id="session" label="Sesión" icon="system-run">
+    <item label="Recargar labwc" icon="view-refresh">
+      <action name="Reconfigure" />
+    </item>
+    <item label="Recargar la barra" icon="view-refresh">
+      <action name="Execute" command="sh -c 'pkill -x quickshell; quickshell &amp;'" />
+    </item>
+    <separator />
+    <item label="Cerrar sesión" icon="system-log-out">
+      <action name="Exit" />
+    </item>
+  </menu>
+
+  <menu id="root-menu" label="">
+    <separator label="Escritorio" />
+    <item label="Aplicaciones" icon="appgrid">
+      <action name="Execute" command="qs ipc call launcher toggle" />
+    </item>
+    <item label="Terminal" icon="kitty">
+      <action name="Execute" command="kitty" />
+    </item>
+    <item label="Archivos" icon="org.gnome.Nautilus">
+      <action name="Execute" command="nautilus --new-window" />
+    </item>
+    <item label="Navegador" icon="google-chrome">
+      <action name="Execute" command="google-chrome-stable" />
+    </item>
+    <item label="Monitor del sistema" icon="org.gnome.SystemMonitor">
+      <action name="Execute" command="gnome-system-monitor" />
+    </item>
+
+    <separator />
+    <item label="Mostrar escritorio" icon="user-desktop">
+      <action name="ToggleShowDesktop" />
+    </item>
+    <menu id="quick-settings" />
+    <menu id="appearance" />
+    <menu id="session" />
+
+    <separator />
+    <item label="Bloquear" icon="system-lock-screen">
+      <action name="Execute" command="sh -c 'swaylock -f -i $HOME/.local/share/backgrounds/2026-11-02-07-01-17-wp.jpeg'" />
+    </item>
+    <item label="Apagar…" icon="system-shutdown">
+      <action name="Execute" command="qs ipc call power toggle" />
+    </item>
+  </menu>
+
+</openbox_menu>

@@ -1,0 +1,6 @@
+# Nombres fijos para las GPUs (los números cardN cambian entre arranques).
+# Instalar:  sudo cp ~/.config/labwc/extras/99-gpu-symlinks.rules /etc/udev/rules.d/
+#            sudo udevadm control --reload && sudo udevadm trigger --subsystem-match=drm
+# Resultado: /dev/dri/igpu (Intel 00:02.0) y /dev/dri/dgpu (NVIDIA 01:00.0)
+KERNEL=="card*", SUBSYSTEM=="drm", KERNELS=="0000:00:02.0", SYMLINK+="dri/igpu"
+KERNEL=="card*", SUBSYSTEM=="drm", KERNELS=="0000:01:00.0", SYMLINK+="dri/dgpu"

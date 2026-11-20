@@ -1,0 +1,81 @@
+# PLANTILLA: scripts/labwc-theme.py la rellena con la paleta del tema automático y escribe themerc-override.
+# Edita ESTE archivo (no themerc-override, que se sobrescribe al cambiar el fondo).
+# Colores de bordes, barras de título y menús (paleta oscura a juego con la barra)
+border.width: 2
+padding.height: 4
+
+window.active.border.color: {accent}
+window.inactive.border.color: {border1}
+window.active.title.bg.color: {bg}
+window.inactive.title.bg.color: {base}
+window.active.label.text.color: {fg}
+window.inactive.label.text.color: {dim}
+window.label.text.justify: center
+window.active.button.unpressed.image.color: {fg}
+window.inactive.button.unpressed.image.color: {dim}
+
+
+
+# Vista previa al ajustar ventanas (relleno naranja translúcido + borde)
+snapping.overlay.region.bg.enabled: yes
+snapping.overlay.edge.bg.enabled: yes
+snapping.overlay.region.border.enabled: yes
+snapping.overlay.edge.border.enabled: yes
+snapping.overlay.region.bg.color: {accent}33
+snapping.overlay.edge.bg.color: {accent}33
+snapping.overlay.region.border.width: 2
+snapping.overlay.edge.border.width: 2
+snapping.overlay.region.border.color: {accent}
+snapping.overlay.edge.border.color: {accent}
+
+# ───── Menús (clic derecho en el escritorio y en las ventanas) ─────
+menu.width.min: 230
+menu.width.max: 360
+menu.border.width: 1
+menu.border.color: {border2}
+menu.overlap.x: -4
+menu.items.padding.x: 14
+menu.items.padding.y: 7
+menu.items.bg.color: {bg}
+menu.items.text.color: {fg}
+menu.items.active.bg.color: {accent}
+menu.items.active.text.color: {onaccent}
+menu.separator.width: 1
+menu.separator.padding.width: 10
+menu.separator.padding.height: 6
+menu.separator.color: {border1}
+menu.title.bg.color: {bg}
+menu.title.text.color: {accent}
+menu.title.text.justify: left
+
+# ───── Pantallas emergentes (Alt+Tab, cambio de escritorio) ─────
+osd.bg.color: {bg}
+osd.border.color: {border2}
+osd.border.width: 1
+osd.label.text.color: {fg}
+
+# Alt+Tab con miniaturas
+osd.window-switcher.style-thumbnail.width.max: 90%
+osd.window-switcher.style-thumbnail.padding: 14
+osd.window-switcher.style-thumbnail.item.width: 280
+osd.window-switcher.style-thumbnail.item.height: 210
+osd.window-switcher.style-thumbnail.item.padding: 12
+osd.window-switcher.style-thumbnail.item.icon.size: 28
+osd.window-switcher.style-thumbnail.item.active.border.width: 2
+osd.window-switcher.style-thumbnail.item.active.border.color: {accent}
+osd.window-switcher.style-thumbnail.item.active.bg.color: {accent}26
+
+# Por si se usa el estilo clásico (lista)
+osd.window-switcher.style-classic.width: 600
+osd.window-switcher.style-classic.padding: 10
+osd.window-switcher.style-classic.item.padding.x: 12
+osd.window-switcher.style-classic.item.padding.y: 8
+osd.window-switcher.style-classic.item.icon.size: 24
+osd.window-switcher.style-classic.item.active.border.width: 2
+osd.window-switcher.style-classic.item.active.border.color: {accent}
+osd.window-switcher.style-classic.item.active.bg.color: {accent}26
+
+# Vista previa de la ventana elegida
+osd.window-switcher.preview.border.width: 2
+osd.window-switcher.preview.border.color: {accent}
+

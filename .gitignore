@@ -1,0 +1,17 @@
+# ── Datos personales (se generan solos en cada equipo) ──
+# Ubicación exacta para el clima y la luz nocturna
+quickshell/weather.json
+# Historial de uso del lanzador
+quickshell/launcher-usage.json
+
+# ── Copias de seguridad locales ──
+*.bak
+*.bak-*
+*.bak.*
+*~
+*.orig
+
+# ── Varios ──
+__pycache__/
+*.pyc
+.qmlls.ini

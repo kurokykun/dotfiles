@@ -1,0 +1,79 @@
+# Colores de bordes, barras de título y menús (paleta oscura a juego con la barra)
+border.width: 2
+padding.height: 4
+
+window.active.border.color: #85a9ff
+window.inactive.border.color: #222a45
+window.active.title.bg.color: #0b1432
+window.inactive.title.bg.color: #010a29
+window.active.label.text.color: #f2f0f4
+window.inactive.label.text.color: #a9abb4
+window.label.text.justify: center
+window.active.button.unpressed.image.color: #f2f0f4
+window.inactive.button.unpressed.image.color: #a9abb4
+
+
+
+# Vista previa al ajustar ventanas (relleno naranja translúcido + borde)
+snapping.overlay.region.bg.enabled: yes
+snapping.overlay.edge.bg.enabled: yes
+snapping.overlay.region.border.enabled: yes
+snapping.overlay.edge.border.enabled: yes
+snapping.overlay.region.bg.color: #85a9ff33
+snapping.overlay.edge.bg.color: #85a9ff33
+snapping.overlay.region.border.width: 2
+snapping.overlay.edge.border.width: 2
+snapping.overlay.region.border.color: #85a9ff
+snapping.overlay.edge.border.color: #85a9ff
+
+# ───── Menús (clic derecho en el escritorio y en las ventanas) ─────
+menu.width.min: 230
+menu.width.max: 360
+menu.border.width: 1
+menu.border.color: #303751
+menu.overlap.x: -4
+menu.items.padding.x: 14
+menu.items.padding.y: 7
+menu.items.bg.color: #0b1432
+menu.items.text.color: #f2f0f4
+menu.items.active.bg.color: #85a9ff
+menu.items.active.text.color: #001945
+menu.separator.width: 1
+menu.separator.padding.width: 10
+menu.separator.padding.height: 6
+menu.separator.color: #222a45
+menu.title.bg.color: #0b1432
+menu.title.text.color: #85a9ff
+menu.title.text.justify: left
+
+# ───── Pantallas emergentes (Alt+Tab, cambio de escritorio) ─────
+osd.bg.color: #0b1432
+osd.border.color: #303751
+osd.border.width: 1
+osd.label.text.color: #f2f0f4
+
+# Alt+Tab con miniaturas
+osd.window-switcher.style-thumbnail.width.max: 90%
+osd.window-switcher.style-thumbnail.padding: 14
+osd.window-switcher.style-thumbnail.item.width: 280
+osd.window-switcher.style-thumbnail.item.height: 210
+osd.window-switcher.style-thumbnail.item.padding: 12
+osd.window-switcher.style-thumbnail.item.icon.size: 28
+osd.window-switcher.style-thumbnail.item.active.border.width: 2
+osd.window-switcher.style-thumbnail.item.active.border.color: #85a9ff
+osd.window-switcher.style-thumbnail.item.active.bg.color: #85a9ff26
+
+# Por si se usa el estilo clásico (lista)
+osd.window-switcher.style-classic.width: 600
+osd.window-switcher.style-classic.padding: 10
+osd.window-switcher.style-classic.item.padding.x: 12
+osd.window-switcher.style-classic.item.padding.y: 8
+osd.window-switcher.style-classic.item.icon.size: 24
+osd.window-switcher.style-classic.item.active.border.width: 2
+osd.window-switcher.style-classic.item.active.border.color: #85a9ff
+osd.window-switcher.style-classic.item.active.bg.color: #85a9ff26
+
+# Vista previa de la ventana elegida
+osd.window-switcher.preview.border.width: 2
+osd.window-switcher.preview.border.color: #85a9ff
+
