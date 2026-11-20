@@ -7,6 +7,19 @@ panel de audio, red, VPN y proxy, batería, luz nocturna, pantalla de bloqueo y 
 La idea es que sea bonito sin pedir hardware potente: nada de animaciones continuas, y servicios
 bajo demanda en lugar de demonios. Consumo en reposo de la barra: unos 3 % de CPU.
 
+![Escritorio](screenshots/01-escritorio.webp)
+
+| | |
+|---|---|
+| ![Lanzador](screenshots/02-lanzador.webp) | ![Calendario, notificaciones y clima](screenshots/03-calendario.webp) |
+| **Lanzador** — categorías, frecuentes, calculadora, emoji, archivos y web | **Calendario** — notificaciones, reproductor y clima |
+| ![Música](screenshots/04-musica.webp) | ![Sonido](screenshots/05-audio.webp) |
+| **Música** — controles MPRIS con carátula | **Sonido** — dispositivos y volumen por aplicación |
+| ![Batería](screenshots/06-bateria.webp) | ![Fondos](screenshots/07-fondos.webp) |
+| **Energía** — batería, brillo, luz nocturna, cafeína y modo de energía | **Fondos** — propios y de Wallhaven, con transiciones y tema automático |
+| ![Apagado](screenshots/08-apagado.webp) | ![Bloqueo](screenshots/09-bloqueo.webp) |
+| **Menú de apagado** | **Pantalla de bloqueo** — el login de greetd usa el mismo diseño |
+
 ## Contenido
 
 | Carpeta | Se enlaza en | Qué es |
