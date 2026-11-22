@@ -953,6 +953,9 @@ Scope {
                                     busy: modelData.pairing
                                     onClicked: {
                                         if (modelData.pairing) { modelData.cancelPair(); return; }
+                                        // Parar el escaneo antes: con discovery activo el
+                                        // controlador Intel falla/se cuelga al emparejar
+                                        root.setBtScanning(false);
                                         modelData.trusted = true;
                                         modelData.pair();
                                     }
