@@ -32,6 +32,13 @@ link quickshell-greeter         "$CFG/quickshell-greeter"
 link labwc                      "$CFG/labwc"
 link systemd/user/cntlm@.service "$CFG/systemd/user/cntlm@.service"
 
+# Distribución de teclado: no va en git (kbd-layout.sh la reescribe); se crea desde la plantilla
+kbd="$DOT/labwc/environment.d/keyboard.env"
+if [ ! -e "$kbd" ]; then
+    cp "$kbd.example" "$kbd"
+    echo "   creado   $kbd (desde keyboard.env.example)"
+fi
+
 mkdir -p "$HOME/.local/state/quickshell" "$HOME/Pictures/Wallpapers"
 chmod +x "$DOT"/quickshell/scripts/*.sh "$DOT"/quickshell/scripts/*.py \
          "$DOT"/labwc/*.sh "$DOT"/quickshell-greeter/*.sh 2>/dev/null || true

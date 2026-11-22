@@ -15,3 +15,8 @@ quickshell/launcher-usage.json
 __pycache__/
 *.pyc
 .qmlls.ini
+
+# ── Estado que cambia al usarlo ──
+# Distribución de teclado activa: la reescribe labwc/kbd-layout.sh.
+# install.sh la crea desde keyboard.env.example si falta.
+labwc/environment.d/keyboard.env
